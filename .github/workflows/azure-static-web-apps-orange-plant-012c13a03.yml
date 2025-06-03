@@ -52,6 +52,7 @@ jobs:
         run: |
           cp staticwebapp.config.json dist/staticwebapp.config.json
           cp index.html dist/index.html
+          cp manifest.xml dist/manifest.xml
 
       # 6) (opcjonalnie) wylistuj zawartość dist/, żeby w logach mieć potwierdzenie,
       #    że w dist/ są: taskpane.html, commands.html, staticwebapp.config.json itd.
