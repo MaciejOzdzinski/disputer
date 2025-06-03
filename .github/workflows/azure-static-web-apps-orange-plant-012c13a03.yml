@@ -69,7 +69,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ORANGE_PLANT_012C13A03 }}
           repo_token:               ${{ secrets.GITHUB_TOKEN }}
           action: "upload"                # upload = bierzemy istniejące pliki, nie budujemy ponownie w Oryx
-          app_location: "dist"               # root repo (tam, gdzie package.json i staticwebapp.config.json)
+          app_location: "/dist"               # root repo (tam, gdzie package.json i staticwebapp.config.json)
           api_location: ""                # nie mamy folderu "api" – dajemy pusty string
           
           skip_app_build: true            # istotne! wyłącza wewnętrzny build przez Oryx
