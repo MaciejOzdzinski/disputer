@@ -33,6 +33,11 @@ jobs:
 
           cp staticwebapp.config.json dist/staticwebapp.config.json
 
+
+      - name: List dist content
+        run: |
+          ls -R dist
+
       - name: Upload build output to Azure Static Web Apps
         id: swa
         uses: Azure/static-web-apps-deploy@v1
@@ -47,6 +52,8 @@ jobs:
           app_artifact_location: "dist" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
 
+
+          
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
