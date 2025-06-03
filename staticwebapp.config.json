@@ -1,5 +1,5 @@
 {
   "navigationFallback": {
-    "rewrite": "/taskpane.html"
+    "rewrite": "/dist/taskpane.html"
   }
 }
