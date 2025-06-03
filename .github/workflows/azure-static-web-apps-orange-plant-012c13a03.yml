@@ -70,7 +70,7 @@ jobs:
           action: "upload"                # upload = bierzemy istniejące pliki, nie budujemy ponownie w Oryx
           app_location: "."               # root repo (tam, gdzie package.json i staticwebapp.config.json)
           api_location: ""                # nie mamy folderu "api" – dajemy pusty string
-          app_artifact_location: "dist"   # katalog, w którym Webpack utworzył gotowe pliki
+          output_location: "dist"   # katalog, w którym Webpack utworzył gotowe pliki
           skip_app_build: true            # istotne! wyłącza wewnętrzny build przez Oryx
 
   close_pull_request_job:
