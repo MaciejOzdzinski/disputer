@@ -80,8 +80,7 @@ const App = (props:AppProps) => {
    <TabList style={{marginBottom:"15px", marginLeft:"-13px"}} size="medium" defaultSelectedValue="tab1">
         <Tab value="tab1" icon={<CalendarMonth />}>Entry 1</Tab>
         <Tab value="tab2" disabled={true}>Entry 2</Tab> 
-        <Tab value="tab3" disabled={true}>Entry 3</Tab>
-       
+     
       </TabList>
      
       <Enterance />
