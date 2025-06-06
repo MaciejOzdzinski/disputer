@@ -6,10 +6,12 @@ import {
   Option,
   useId,
   makeStyles,
-   Radio, RadioGroup, Textarea,Button, tokens
+   Radio, RadioGroup, Textarea,Button, Spinner, tokens
 
 } from '@fluentui/react-components';
 import { DatePicker } from "@fluentui/react-datepicker-compat";
+import { Play24Regular, CheckmarkCircle24Regular } from '@fluentui/react-icons';
+
 
 
 
@@ -78,6 +80,10 @@ export const Enterance: React.FC = () => {
  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [isComplete, setIsComplete] = useState(false);
+    const [progress, setProgress] = useState(0);
+
 
   useEffect(() => {
     const url =
@@ -110,6 +116,42 @@ export const Enterance: React.FC = () => {
 
   
    const styles = useStyles();
+
+
+   
+  const PressButton = async () => {
+   
+
+    setIsLoading(true);
+    setIsComplete(false);
+    setProgress(0);
+
+
+     // Progress animation
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        const newProgress = prev + (100 / 60); // 60 updates over 6 seconds
+        if (newProgress >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return newProgress;
+      });
+    }, 100);
+
+
+  // Complete after 6 seconds
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsComplete(true);
+      setTimeout(() => setIsComplete(false), 3000); // Hide success message after 3 seconds
+    }, 6000);
+
+
+
+
+  };
+
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -195,8 +237,15 @@ export const Enterance: React.FC = () => {
 
 
 <div className={styles.buttonContainer}>
-      <Button appearance="primary" disabled={false} size="small"  >
-        Insert text
+      <Button 
+      appearance="primary" 
+       disabled={isLoading}
+      size="medium"
+      icon={isLoading ? <Spinner size="tiny" /> : <Play24Regular />}
+      onClick={PressButton}
+      >
+       {isLoading ? 'Processing...' : 'Start Process'}
+
       </Button>
       </div>
 
