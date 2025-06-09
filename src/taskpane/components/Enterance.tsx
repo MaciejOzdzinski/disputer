@@ -1,5 +1,7 @@
 import React,  { useState, useEffect } from 'react';
 import {
+  Skeleton,
+  SkeletonItem ,
   Field,
   InfoLabel,
   Combobox,
@@ -90,6 +92,10 @@ export const Enterance: React.FC = () => {
       "https://adstnt-ghbuchbaebgca4et.westeurope-01.azurewebsites.net/api/taskmanagement/getttasksandresponsible";
 
     async function fetchLoadSet() {
+
+       // sztuczne opóźnienie
+    // await new Promise(res => setTimeout(res, 5000));
+
       try {
         const response = await fetch(url, {
           method: 'GET',
@@ -166,6 +172,16 @@ export const Enterance: React.FC = () => {
           validationState={error ? 'error' : 'none'}
           validationMessage={error || ''}
       >
+
+   {loading ? (
+
+      <Skeleton aria-label="Loading Content">
+      <SkeletonItem shape="rectangle" size={24}  />
+      </Skeleton>
+         
+ ) : (
+
+
         <Combobox
           aria-labelledby={comboId}
           placeholder="Select an action"
@@ -177,6 +193,8 @@ export const Enterance: React.FC = () => {
             </Option>
           ))}
         </Combobox>
+
+ )}
       </Field>
 
 
@@ -194,7 +212,11 @@ export const Enterance: React.FC = () => {
       >
 
     {loading ? (
-          <div>Loading handlers...</div>
+
+      <Skeleton aria-label="Loading Content">
+      <SkeletonItem shape="rectangle" size={24}  />
+      </Skeleton>
+         
  ) : (
 
         <Combobox
